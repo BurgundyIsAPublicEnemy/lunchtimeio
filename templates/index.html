@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <script src="/static/js/tiny-date-picker/dist/tiny-date-picker.min.js"></script>
+  <script src="/static/js/index.js"></script>
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="apple-touch-icon" href="/static/imgs/pizza.png" />
+  <link rel="icon" href="/static/imgs/pizza.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/css/index.css" />
+  <link rel="stylesheet" href="/static/js/tiny-date-picker/tiny-date-picker.min.css" />
+  <meta name="description" content="Meet others just like you" />
+  <title>Lunchtime.io</title>
+</head>
+
+<body class="joining">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="App">
+      <header class="top">
+        <div class="logo-left">
+          <a href="/">Lunchtime.io 🍕</a>
+        </div>
+        <div class="text-right">
+          <a class="home" href="/">Home</a>
+          <a class="join" type="button">Join</a>
+        </div>
+      </header>
+      <header class="App-header">
+        <div class="back">
+          <img class="wave" src="/static/imgs/wave.svg" alt="" />
+        </div>
+        <main>
+          <div class="left">
+            <img class="vid-chat" src="/static/imgs/video-chat.svg" alt="" />
+          </div>
+          <div class="right">
+            <h1 class="desc">Meeting other people is tough during COVID-19.</h1>
+            <h3 class="title">COME SAY HELLO</h3>
+            <p class="text">
+              Select a time and turn up. No <span class="line-through">sign up</span>, just <span
+                class="line-under">have fun</span>.
+              <br />
+              Oh, you are going to need a Zoom account for this.
+            </p>
+            <p class="small">Meet others just like you.</p>
+            <div class="proceedButton join" role="button">
+              <div class="proceedButton-btns">
+                <div class="proceedButton-text"></div>
+                <div class="proceedButton-arrow">
+                  <img class="svg" src="/static/imgs/right-arrow.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </header>
+      <header class="App-secondheader">
+        <div class="bottom {{ '' if data else 'nothing' }}">
+          <p class="nothing-title bottom-item">Nothing is up yet! Please wait</p>
+          <h1 class="desc2 bottom-item">Pick the time that works best for you</h1>
+          <h3 class="title bottom-item"></h3>
+          <div class="zoom-link bottom-item">
+            <a></a>
+          </div>
+          {% if data %}
+            {% for info in data %}
+              <div class="selectButton bottom-item">
+                <p class="item time" data-time="{{ info['time'] }}">
+                  {{ info['time'] }} GMT
+                </p>
+                <div class="item members">
+                  <p><span class="joins-num">{{ info['clicks'] }}</span><span class="joins">Joined</span></p>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+          <div class="selectButton bottom-item own">
+            <p class="item">Or choose your own time.</p>
+            <input type="text" name="custom" spellcheck="false">
+            <div class="customSave">
+              <div class="inner">
+                  <span>Continue</span>
+              </div>
+            </div>
+            <div class="steps">
+              <div class="step">
+                  Date
+              </div>
+              <div class="step">
+                  Time
+              </div>
+              <div class="step">
+                  Member capacity
+              </div>
+            </div>
+            <div class="capacity">
+              <div class="inner">
+                 <div>What capacity of people should be able to join at the chosen date and time</div>
+                 <div>
+                    <div class="option">
+                       <input type="checkbox" data-number="2">
+                       2
+                    </div>
+                    <div class="option">
+                       <input type="checkbox" data-number="4">
+                       4
+                    </div>
+                    <div class="option">
+                       <input type="checkbox" data-number="6">
+                       6
+                    </div>
+                    <div class="option">
+                       <input type="checkbox" data-number="8">
+                       8
+                    </div>
+                    <div class="option">
+                       <input type="checkbox" data-number="0">
+                       Any
+                    </div>
+                 </div>
+              </div>
+           </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+</body>
+
+</html>
